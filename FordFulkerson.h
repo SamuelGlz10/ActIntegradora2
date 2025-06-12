@@ -5,7 +5,7 @@
 using namespace std;
 
 // Búsqueda en anchura para encontrar un camino aumentante
-bool bfs(int** rGraph, int s, int t, int parent[], int N)
+bool bfs(int rGraph[100][100], int s, int t, int parent[], int N)
 {
     bool visited[100];
     memset(visited, 0, sizeof(visited));
@@ -43,7 +43,7 @@ int fordFulkerson(int graph[100][100], int s, int t, int N)
     int parent[100];
     int max_flow = 0;
     // Mientras exista un camino aumentante
-    while (bfs((int**)rGraph, s, t, parent, N)) {
+    while (bfs(rGraph, s, t, parent, N)) {
         int path_flow = INT_MAX;
         // Encuentra la capacidad mínima en el camino encontrado
         for (v = t; v != s; v = parent[v]) {
