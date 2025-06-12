@@ -31,7 +31,15 @@ bool bfs(int rGraph[100][100], int s, int t, int parent[], int N)
     return false;
 }
 
-// Algoritmo de Ford-Fulkerson para flujo máximo
+/**
+ * @brief Calcula el flujo máximo entre dos nodos en un grafo dirigido usando el algoritmo de Ford-Fulkerson.
+ * 
+ * @param graph Matriz de adyacencia de capacidades (tamaño 100x100).
+ * @param s Nodo fuente.
+ * @param t Nodo sumidero.
+ * @param N Número de nodos en el grafo.
+ * @return int Flujo máximo desde s hasta t.
+ */
 int ford_fulkerson(int graph[100][100], int s, int t, int N)
 {
     int u, v;
