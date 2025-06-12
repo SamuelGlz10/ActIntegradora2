@@ -115,7 +115,7 @@ int main() {
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < N; ++j)
             graph[i][j] = cap[i][j];
-    int maxflow = fordFulkerson(graph, 0, N - 1, N);
+    int maxflow = ford_fulkerson(graph, 0, N - 1, N);
     cout << "3." << endl;
     cout << maxflow << endl;
 

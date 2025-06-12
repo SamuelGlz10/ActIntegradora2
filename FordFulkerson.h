@@ -32,7 +32,7 @@ bool bfs(int rGraph[100][100], int s, int t, int parent[], int N)
 }
 
 // Algoritmo de Ford-Fulkerson para flujo máximo
-int fordFulkerson(int graph[100][100], int s, int t, int N)
+int ford_fulkerson(int graph[100][100], int s, int t, int N)
 {
     int u, v;
     int rGraph[100][100];
