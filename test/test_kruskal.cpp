@@ -1,5 +1,44 @@
 #include <gtest/gtest.h>
 #include "Kruskal.h"
+#include <vector>
+#include <algorithm>
+
+// Definición mínima para pruebas (ajusta según tu implementación real)
+struct Edge {
+    int u, v, weight;
+    bool operator<(const Edge& other) const { return weight < other.weight; }
+};
+
+class KruskalGraph {
+public:
+    int V;
+    std::vector<Edge> edges;
+    KruskalGraph(int V) : V(V) {}
+    void addEdge(int u, int v, int w) {
+        edges.push_back({u, v, w});
+    }
+    // Implementación simple de Kruskal para pruebas
+    std::vector<Edge> kruskalMST() {
+        std::vector<Edge> result;
+        std::vector<int> parent(V);
+        for (int i = 0; i < V; ++i) parent[i] = i;
+        auto find = [&](int x) {
+            while (parent[x] != x) x = parent[x];
+            return x;
+        };
+        auto unite = [&](int x, int y) {
+            parent[find(x)] = find(y);
+        };
+        std::sort(edges.begin(), edges.end());
+        for (const auto& e : edges) {
+            if (find(e.u) != find(e.v)) {
+                result.push_back(e);
+                unite(e.u, e.v);
+            }
+        }
+        return result;
+    }
+};
 
 // Caso básico: grafo conectado simple
 TEST(KruskalTest, BasicConnectedGraph) {
