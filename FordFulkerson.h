@@ -1,3 +1,21 @@
+/*
+ * ActIntegradora2 - Ford-Fulkerson Algorithm Implementation
+ * Copyright (C) 2024 SamyG
+ *
+ * This file is part of ActIntegradora2 and is distributed under the terms of the
+ * GNU Lesser General Public License as published by the Free Software Foundation,
+ * either version 3 of the License, or (at your option) any later version.
+ *
+ * ActIntegradora2 is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
 #include <iostream>
 #include <limits.h>
 #include <queue>
@@ -5,6 +23,17 @@
 using namespace std;
 
 // Búsqueda en anchura para encontrar un camino aumentante
+/**
+ * @brief Realiza una búsqueda en anchura para encontrar un camino aumentante en el grafo residual.
+ * 
+ * @param rGraph Matriz de adyacencia residual (100x100).
+ * @param s Nodo fuente.
+ * @param t Nodo sumidero.
+ * @param parent Array para reconstruir el camino.
+ * @param N Número de nodos.
+ * @return true Si existe un camino aumentante.
+ * @return false Si no existe camino aumentante.
+ */
 bool bfs(int rGraph[100][100], int s, int t, int parent[], int N)
 {
     bool visited[100];
