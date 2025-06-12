@@ -1,10 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Estructura de conjuntos disjuntos (Union-Find)
+/**
+ * @brief Estructura para conjuntos disjuntos (Union-Find) con compresión de caminos y unión por rango.
+ */
 class DSU {
     vector<int> parent, rank;
 public:
+    /**
+     * @brief Inicializa la estructura DSU para n elementos.
+     * @param n Número de elementos.
+     */
     DSU(int n) {
         parent.resize(n);
         rank.resize(n);
@@ -13,11 +19,19 @@ public:
             rank[i] = 1;
         }
     }
-    // Encuentra el representante del conjunto de i
+    /**
+     * @brief Encuentra el representante del conjunto de i.
+     * @param i Elemento.
+     * @return int Representante del conjunto.
+     */
     int find(int i) {
         return (parent[i] == i) ? i : (parent[i] = find(parent[i]));
     }
-    // Une dos conjuntos
+    /**
+     * @brief Une dos conjuntos.
+     * @param x Elemento x.
+     * @param y Elemento y.
+     */
     void unite(int x, int y) {
         int s1 = find(x), s2 = find(y);
         if (s1 != s2) {
@@ -32,7 +46,13 @@ inline bool comparator(vector<int> &a,vector<int> &b){
     return a[2] < b[2];
 }
 
-vector<pair<int, int>> kruskalMST(vector<vector<int>>& dist) {
+/**
+ * @brief Calcula el árbol de expansión mínima usando el algoritmo de Kruskal.
+ * 
+ * @param dist Matriz de distancias.
+ * @return vector<pair<int, int>> Aristas del MST.
+ */
+vector<pair<int, int>> kruskal_mst(vector<vector<int>>& dist) {
     int V = dist.size();
     vector<vector<int>> edges;
     
