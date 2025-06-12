@@ -105,11 +105,16 @@ vector<pair<int, int>> kruskal_mst(vector<vector<int>>& dist) {
     int count = 0;
     
     for (auto &e : edges) {
-        int x = e[0], y = e[1], w = e[2];
+        int x = e[0];
+        int y = e[1];
+        int w = e[2];
         if (dsu.Find(x) != dsu.Find(y)) {
             dsu.Unite(x, y);
             mst_edges.push_back({x, y});
-            if (++count == V - 1) break;
+            count++;
+            if (count == V - 1) {
+                break;
+            }
         }
     }
     
