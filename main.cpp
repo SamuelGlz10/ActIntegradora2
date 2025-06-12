@@ -4,10 +4,10 @@
 #include <sstream>
 #include <limits>
 #include <cmath>
-#include "funciones\Kruskal.h"
-#include "funciones\TravelingSalesman.h"
-#include "funciones\FordFulkerson.h"
-#include "funciones\LinealSearch.h"
+#include "Kruskal.h"
+#include "TravelingSalesman.h"
+#include "FordFulkerson.h"
+#include "LinealSearch.h"
 using namespace std;
 
 string idxToColony(int idx) {
