@@ -81,3 +81,26 @@ vector<pair<int, int>> kruskal_mst(vector<vector<int>>& dist) {
     
     return mst_edges;
 }
+
+#ifdef UNIT_TEST
+#include <gtest/gtest.h>
+
+TEST(KruskalTest, SimpleGraph) {
+    vector<vector<int>> dist = {
+        {0, 1, 2},
+        {1, 0, 3},
+        {2, 3, 0}
+    };
+    auto mst = kruskal_mst(dist);
+    // El MST de este grafo debe tener 2 aristas
+    EXPECT_EQ(mst.size(), 2);
+    // Las aristas deben conectar todos los nodos
+    set<int> nodes;
+    for (auto& e : mst) {
+        nodes.insert(e.first);
+        nodes.insert(e.second);
+    }
+    EXPECT_EQ(nodes.size(), 3);
+}
+
+#endif
