@@ -53,16 +53,30 @@ public:
      * @param y Elemento y.
      */
     void Unite(int x, int y) {
-        int s1 = Find(x), s2 = Find(y);
+        int s1 = Find(x);
+        int s2 = Find(y);
         if (s1 != s2) {
-            if (rank[s1] < rank[s2]) parent[s1] = s2;
-            else if (rank[s1] > rank[s2]) parent[s2] = s1;
-            else parent[s2] = s1, rank[s1]++;
+            if (rank[s1] < rank[s2]) {
+                parent[s1] = s2;
+            }
+            else if (rank[s1] > rank[s2]) {
+                parent[s2] = s1;
+            }
+            else {
+                parent[s2] = s1;
+                rank[s1]++;
+            }
         }
     }
 };
-// Comparador para ordenar aristas por peso
-inline bool comparator(vector<int> &a,vector<int> &b){
+/**
+ * @brief Comparador para ordenar aristas por peso.
+ * 
+ * @param a Arista a comparar.
+ * @param b Arista a comparar.
+ * @return true si el peso de a es menor que el de b.
+ */
+inline bool comparator(vector<int> &a, vector<int> &b) {
     return a[2] < b[2];
 }
 
