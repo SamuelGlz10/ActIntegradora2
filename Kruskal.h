@@ -44,16 +44,16 @@ public:
      * @param i Elemento.
      * @return int Representante del conjunto.
      */
-    int find(int i) {
-        return (parent[i] == i) ? i : (parent[i] = find(parent[i]));
+    int Find(int i) {
+        return (parent[i] == i) ? i : (parent[i] = Find(parent[i]));
     }
     /**
      * @brief Une dos conjuntos.
      * @param x Elemento x.
      * @param y Elemento y.
      */
-    void unite(int x, int y) {
-        int s1 = find(x), s2 = find(y);
+    void Unite(int x, int y) {
+        int s1 = Find(x), s2 = Find(y);
         if (s1 != s2) {
             if (rank[s1] < rank[s2]) parent[s1] = s2;
             else if (rank[s1] > rank[s2]) parent[s2] = s1;
@@ -92,8 +92,8 @@ vector<pair<int, int>> kruskal_mst(vector<vector<int>>& dist) {
     
     for (auto &e : edges) {
         int x = e[0], y = e[1], w = e[2];
-        if (dsu.find(x) != dsu.find(y)) {
-            dsu.unite(x, y);
+        if (dsu.Find(x) != dsu.Find(y)) {
+            dsu.Unite(x, y);
             mst_edges.push_back({x, y});
             if (++count == V - 1) break;
         }

@@ -60,8 +60,8 @@ int main() {
     int count = 0;
     for (auto &e : edges) {
         int x = e[0], y = e[1], w = e[2];
-        if (dsu.find(x) != dsu.find(y)) {
-            dsu.unite(x, y);
+        if (dsu.Find(x) != dsu.Find(y)) {
+            dsu.Unite(x, y);
             mst_edges.push_back({x, y});
             if (++count == N - 1) break;
         }
